@@ -1,0 +1,234 @@
+@charset "UTF-8";
+
+/* table{
+   width:400px;
+   height:500px;
+   border:1px solid gray;
+   align:center;
+   padding: 2px;
+   text-align: left;
+} */
+
+
+/* style.css */
+
+
+
+
+main {
+   
+    flex: 1; /* 남은 공간을 채우도록 설정 */
+    padding: 20px;
+    display: flex;
+    justify-content: center; /* 중앙 정렬 */
+    align-items: flex-start; /* 상단 정렬 */
+}
+
+main{
+	
+	padding-top: 30px;
+	
+}
+
+form {
+	font-family: Nanum Gothic;
+	font-weight:bold;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #C4DEFF;
+    width: 100%;
+    max-width: 600px;
+    margin: auto; /* 가운데 정렬 */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+    text-align: center;
+    padding: 2px;
+    
+}
+
+hr{
+   border: 1px solid #C4DEFF;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+	font-family: Nanum Gothic;
+	font-weight:bold;
+    background: #C4DEFF;
+}
+
+.id-input-container {
+    display: flex;
+    align-items: center;
+    
+}
+
+.id-input-container input {
+    width: calc(100% - 100px); /* 텍스트 필드 너비를 계산하여 설정 */
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #C4DEFF;
+    border-radius: 4px;
+}
+
+.id-input-container span {
+    margin-left: 10px; /* 텍스트 메시지를 텍스트 필드의 오른쪽에 위치시킵니다. */
+    font-size: 10px;
+    color: red;
+    border: 1px solid white;
+}
+
+.tel-container{
+   display: flex;
+   align-items: center;
+}
+
+.tel-container input[type="text"] {
+    width: calc(100% - 130px); /* 버튼과 입력 상자 너비 합계 */
+    margin-right: 10px;
+    
+}
+
+
+.email-container{
+   display: flex;
+   align-items: center;
+   
+}
+
+
+.email-container input[type="button"]{
+   margin-left: 10px;
+}
+
+.email-container span{
+   
+}
+
+#user_email_select{
+   margin-right: 10px;
+   
+}
+
+input[type="text"]{
+   height: 10px;
+   
+   
+}
+
+
+input[type="text"], input[type="password"], input[type="file"], input[type="button"], input[type="radio"], span {
+    width: calc(100% - 200px);
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #C4DEFF;
+    border-radius: 4px;
+    height: 30px; /* 모든 텍스트 상자의 높이를 30px로 설정 */
+    box-sizing: border-box; /* 패딩과 테두리를 포함한 전체 높이 계산 */
+    overflow: hidden; /* 내용이 넘칠 경우 숨김 */
+    white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+    text-overflow: ellipsis; /* 넘친 텍스트를 '...'으로 표시 */
+    
+}
+
+input[type="button"] {  /* 중복검사 버튼 기본 색 */
+    width: auto;
+    background-color: #C4DEFF;
+    color: black;
+    border: none;
+    cursor: pointer;
+    font-weight:bold;
+    text-shadow: 1px 1px 4px rgba(0,34,102,0.3);
+    box-shadow: 1px 1px 1px rgba(0,0,0.1);
+}
+
+input[type="button"]:hover { /*마우스 호버 하였을 때 바뀔 색*/
+    background-color: #79AAFF;
+}
+
+input[type="radio"] {
+    width: auto;
+    margin-right: 10px;
+}
+
+.container {
+    margin-bottom: 15px;
+}
+
+#id_check_message {
+    
+    font-size: 10px;
+    color: red;
+    margin-top: 5px;
+    border: 1px solid white;
+}
+#user_email_write_warn {
+    font-size: 12px;
+    color: red;
+    margin-left: 10px;
+    margin-top: 5px;
+    border: 1px solid white;
+}
+
+.email-input-container {
+    display: flex;
+    align-items: center;
+}
+
+.email-input-container input {
+    width: calc(100% - 290px); /* 텍스트 필드 너비를 계산하여 설정 */
+    
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #C4DEFF;
+    border-radius: 4px;
+}
+
+.email-input-container span {
+     /* 텍스트 메시지를 텍스트 필드의 오른쪽에 위치시킵니다. */
+    font-size: 10px;
+    color: red;
+    border: 1px solid white;
+    width: 250px;
+}
+
+.email-modify-container {
+    display: flex;
+    align-items: center;
+}
+
+.email-modify-container input {
+    width: calc(100% - 150px); /* 텍스트 필드 너비를 계산하여 설정 */
+    
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #C4DEFF                                                                      ;
+    border-radius: 4px;
+}
+
+/* input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #6B66FF;
+    border-radius: 4px;
+    background-color: #D7D2FF;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    box-sizing: border-box; 패딩과 테두리를 포함한 전체 너비 계산
+    transition: background-color 0.3s ease;
+} */
+
+input[type="file"]:hover {
+    background-color: #E9E4FF;
+}

@@ -1,0 +1,474 @@
+        body {
+            background-color: white; /* 배경색 설정 */
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        
+        main {
+        	display:flex;
+            padding: 50px 0 30px 15%;
+            justify-content: flex-start; ;
+            align-items: flex-start;
+        }
+        
+        #main_form{
+        	width: 100%;
+        	text-align: left;
+            padding:30px;
+            box-shadow: 0 1px 5px #C4DEFF;
+        }
+        
+        
+/*         .sitter_find {
+            width: 70%; 전체 너비로 설정
+            margin: auto; 가운데 정렬을 위해 자동 마진 설정
+            background-color: white;
+            padding: 20px;
+        } */
+        
+        .sitter_container {
+           	justify-content: center;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            padding: 15px;
+            font-weight: bold;
+            
+        }
+        
+        #gallerywrap {
+            flex: 0 0 200px; /* 이미지 너비 고정 */
+       		justify-content: flex-start;
+            padding-right: 15px;
+            display: flex;
+        }
+        
+        #btn{
+        	position: relative;
+        	top:350px;
+        	
+        }
+        
+         #gallery {
+            width: 500px; /* 이미지 너비 100%로 설정 */
+            height: 400px;
+            border-radius: 5px;
+        }
+
+
+        .sitter_info {
+            flex: 1;
+            display:flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        
+        h2{
+            padding:10px 0 10px 0;
+            font-family: 'Gamja Flower', cursive;
+            font-size: 40px;
+            color: black;            
+        }
+
+        h3{ 
+        	
+            padding:10px 0 10px 0;
+            font-family: 'Gamja Flower', cursive;
+            font-size: 30px;
+            color: black;            
+        }
+        
+        
+        
+        
+        .user_name{
+        	padding-bottom: 10px;
+        	font-family: Nanum Gothic;
+        }
+        
+        .service{
+        	display: flex;
+        	margin-bottom: 10px;
+        	font-family: Nanum Gothic;
+        }
+        
+		.tag{
+        	justify-content: center;
+        	border-radius:5px;
+        	background-color: #C4DEFF;
+        	margin-right: 6px;
+        }
+        
+        
+        input[type="button"] {
+            padding: 10px;
+            background-color: #79ABFF; /* 배경색 설정 */
+            color: black; /* 텍스트 색상 설정 */
+            cursor: pointer; /* 커서 모양 설정 */
+            border: none; /* 테두리 없음 */
+            font-weight: bold;
+            text-align: center;
+            border-radius: 5px;
+            
+            
+        }
+        
+        input[type="button"]:hover {
+            background-color: #C7D3ED;
+        }
+        
+        .sitter_hr{
+        	border: 1px dashed #C4DEFF;
+        }
+        
+
+        .sitter_field_container{
+        	border-radius: 10px;
+        	
+        }
+        
+        .sitter_field{
+        	padding: 10px;
+        }
+        
+
+        
+        .sitter_field h3{
+        	font-family: 'Gamja Flower', cursive;
+        	font-size: 30px;
+        	padding-bottom: 10px;
+        }
+        
+    
+        
+        .dog p{
+        	margin-left:10px;
+        	padding: 5px;
+        	font-size: 15px;
+        	font-weight: bold;
+        	font-family: Nanum Gothic;
+        	background-color:#C7D3ED;
+        	width:40%;
+        	border-radius:5px;
+        }
+        
+        .care{
+        	padding-bottom: 10px;
+        	
+        }
+        
+    
+        .care_box{
+        	width:40%;
+        	display: flex;
+        	justify-content: space-between;
+        	border-radius:5px;
+        	background-color:#C7D3ED;
+        	margin: 0 0 5px 10px; 
+        	font-family: Nanum Gothic;
+        	font-size: 15px;
+        	font-weight: bold;
+        	padding: 5px;
+        	box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .care_box2{
+        	width:40%;
+        	display: flex;
+        	justify-content: space-between;
+        	border-radius:5px;
+        	background-color:white;
+        	margin: 0 0 5px 10px; 
+        	font-family: Nanum Gothic;
+        	font-size: 15px;
+        	font-weight: bold;
+        	padding: 5px;
+        	box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+        }
+        
+
+        
+        .care_time{
+        }
+        
+        .start_end{
+        	padding: 5px;
+        	width:40%;
+        	display:flex;
+        	justify-content:space-between;
+        	border-radius:5px;
+        	background-color:#C7D3ED;
+        	margin: 0 0 5px 10px; 
+        	font-family: Nanum Gothic;
+        	font-size: 15px;
+        	margin-left: 10px;
+        	font-weight: bold;
+        	box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .start_end2{
+        	width:40%;
+        	padding: 5px;
+        	display:flex;
+        	justify-content:space-between;
+        	border-radius:5px;
+        	background-color:white;
+        	margin: 0 0 5px 10px; 
+        	font-family: Nanum Gothic;
+        	font-size: 15px;
+        	margin-left: 10px;
+        	font-weight: bold;
+        	box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        
+        
+        .care_pay{
+        	padding-bottom: 10px;
+        }
+        
+        .care_tm{
+        	width:40%;
+        	padding: 5px;
+        	display:flex;
+        	justify-content:space-between;
+        	border-radius:5px;
+        	background-color:#C7D3ED;
+        	font-family: Nanum Gothic;
+        	font-size: 15px;
+        	margin: 0 0 5px 10px; 
+        	font-weight: bold;
+        	box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .care_tm2{
+        	width:40%;
+        	padding: 5px;
+        	display:flex;
+        	justify-content:space-between;
+        	border-radius:5px;
+        	background-color:white;
+        	font-family: Nanum Gothic;
+        	font-size: 15px;
+        	margin: 0 0 5px 10px; 
+        	font-weight: bold;
+        	box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .care_note{
+        	padding-bottom: 10px;
+        }
+        
+        .note{
+      		width:40%;
+        	padding: 5px;
+        	display:flex;
+        	justify-content:space-between;
+        	font-family: Nanum Gothic;
+        	font-size: 15px;
+        	font-weight: bold;
+        	border-radius:5px;
+        	background-color:#C7D3ED;
+        	margin: 0 0 5px 10px; 
+        	box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .note2{
+      		width:40%;
+        	padding: 5px;
+        	display:flex;
+        	justify-content:space-between;
+        	font-family: Nanum Gothic;
+        	font-size: 15px;
+        	font-weight: bold;
+        	border-radius:5px;
+        	background-color:white;
+        	margin: 0 0 5px 10px; 
+        	box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .content{
+        	box-shadow: 0px 0px 6px #C4DEFF;
+        	padding: 10px;
+        	border-radius: 10px;
+        	width: 80%;
+        }
+        
+        .content_div{
+        	font-family: Nanum Gothic;
+        	font-size: 15px;
+        	padding:5px;
+        	font-weight: bold;
+        	line-height: 25px;
+        }
+        
+        
+        
+        .license_container{
+        	padding-bottom: 10px;
+        }
+        
+        .license{
+       	    width:40%;
+        	padding: 5px;
+        	display:flex;
+        	justify-content:space-between;
+        	border-radius:5px;
+        	background-color:#C7D3ED;
+        	margin: 0 0 5px 10px; 
+        	box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+        	font-family: Nanum Gothic;
+        	font-size: 15px;
+        	margin-left: 10px;
+        	font-weight: bold;
+        }
+
+        .license2{
+       	    width:40%;
+        	padding: 5px;
+        	display:flex;
+        	justify-content:space-between;
+        	border-radius:5px;
+        	background-color:white;
+        	margin: 0 0 5px 10px; 
+        	box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+        	font-family: Nanum Gothic;
+        	font-size: 15px;
+        	margin-left: 10px;
+        	font-weight: bold;
+        }
+        
+        .map_container{
+        	
+        	border-radius: 10px;
+        }
+        
+        .map{
+        	padding: 10px;
+        }
+         
+        .sitter_tag{
+        	justify-content: center;
+        	border-radius:5px;
+        	background-color: #C4DEFF;
+        	margin-left: 10px;
+        	
+        }
+        
+        .sitter_menu {
+        	margin-bottom:10px;
+        	margin-top:10px;
+            display: flex;
+            align-items: center;
+            font-size: 10px;
+            
+        }
+        
+        .sitter_menu p {
+            margin-left: 10px; /* 여백 조정 */
+        }
+        
+        .page_menu {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        /* reserve_form.jsp */
+        
+		 /* 사이드바를 포함하는 섹션의 스타일 정의 */
+        .reserve_section {
+            position: fixed; /* 고정된 위치에 사이드바를 배치 */
+            top: 170px; /* 상단에서 10px 떨어진 위치에 배치 */
+            right: 15%; /* 오른쪽에서 20px 떨어진 위치에 배치 */
+            width: 400px; /* 사이드바 너비 */
+            height: 81%; /* 전체 화면 높이에서 20px 뺀 높이로 설정 */
+            overflow-y: auto; /* 내용이 넘치면 수직 스크롤 가능 */
+            z-index: 900; /* 다른 요소 위에 위치 */
+            background-color: #EBF7FF; /* 배경 색상을 회색으로 설정 */
+            border-radius: 5px; /* 모서리를 둥글게 20px 반경으로 설정 */
+            padding: 20px; /* 내부 여백을 20px로 설정 */
+            scrollbar-width: none; /* Firefox: 스크롤바 숨기기 */
+        	box-shadow: 0 3px 5px #C4DEFF;
+        }
+
+        /* .reserve 클래스는 .reserve_section 내의 요소로 함께 고정된 위치에 있도록 합니다. */
+        .reserve {
+            width: 100%; /* 부모 요소의 너비를 모두 차지 */
+            background-color: inherit; /* 부모 요소의 배경 색상을 상속 */
+        }
+        
+        .reserve_p{
+        	font-family: 'Gamja Flower', cursive;
+        	font-size: 35px;
+        	font-weight: bold;
+        	
+        }
+        
+        .select-sitter{
+        	font-family: Nanum Gothic;
+        	font-size: 20px;
+        	font-weight: bold;
+        	padding-bottom: 10px;
+        }
+        
+        select{
+        	padding: 5px;
+        	border: 1px solid #C7D3ED;
+        	box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+        	border-radius: 5px;
+        	
+        }
+        
+        input[type="radio"], [type="checkbox"] {
+			padding: 15px;
+			margin:5px;
+			border: 1px solid #C7D3ED;
+			box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+			
+			border-radius: 5px;
+		}
+		
+		.select-time{
+			width:270px;
+			margin:5px;
+			border: 1px solid #C7D3ED;
+			box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+			border-radius: 5px;
+		}
+		
+		.dog-size, .sitter-type{
+			width:270px;
+			border: 1px solid #C7D3ED;
+			border-radius: 5px;
+		}
+		
+		
+		input[type="text"]{
+			padding: 5px;
+			border-radius: 5px;
+			border: 1px solid #C7D3ED;
+			box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+			margin: 5px;
+		}
+		
+		textarea{
+			padding: 10px;
+			border-radius: 5px;
+			margin-right: 15px;
+			border: 1px solid #C7D3ED;
+			box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+			height: 100px;
+		}
+		
+		.reserve_btn{
+			padding: 10px 0 10px 0;
+		}
+        
+        
+        
+		
+		
+        
+        
+        

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mypage">
+	<select id="selectOne_idx" resultType="user" parameterType="int">
+		select * from USERS where user_idx=#{user_idx}
+	</select>
+
+	<select id="selectOne_modifyTel" resultType="user"
+		parameterType="String">
+		select * from USERS where user_tel=#{user_tel} and
+		user_id=#{user_id}
+	</select>
+
+	<select id="selectOne_existsTel" resultType="user"
+		parameterType="String">
+		select * from USERS where user_tel=#{user_tel}
+	</select>
+
+	<update id="user_update" parameterType="user">
+		update USERS set
+		user_pwd=#{user_pwd},
+		user_tel=#{user_tel},
+		user_postcode=#{user_postcode},
+		user_address=#{user_address},
+		user_detailaddress=#{user_detailaddress},
+		user_extraaddress=#{user_extraaddress}
+		where user_idx=#{user_idx}
+	</update>
+
+	<update id="update_sitterForm" parameterType="vo.SitterVO">
+      update SITTER set
+      sitter_title = #{sitter_title},
+      sitter_city = #{sitter_city},
+      sitter_district = #{sitter_district},
+      sitter_care = #{sitter_care},
+      sitter_walk = #{sitter_walk},
+      sitter_pickup = #{sitter_pickup},
+      sitter_bath = #{sitter_bath},
+      sitter_olddog = #{sitter_olddog},
+      sitter_house = #{sitter_house},
+      sitter_dogcount = #{sitter_dogcount},
+      sitter_kid = #{sitter_kid},
+      sitter_homecam = #{sitter_homecam},
+      sitter_fence = #{sitter_fence},
+      sitter_pet = #{sitter_pet},
+      sitter_small = #{sitter_small},
+      sitter_medium = #{sitter_medium},
+      sitter_large = #{sitter_large},
+      sitter_start_time = #{sitter_start_time},
+      sitter_end_time = #{sitter_end_time},
+      sitter_introduce = #{sitter_introduce},
+      house1_name = #{house1_name},
+      house2_name = #{house2_name},
+      house3_name = #{house3_name},
+      sitter_license_name1 = #{sitter_license_name1},
+      sitter_license_auth1 = #{sitter_license_auth1},
+      sitter_license_date1 = #{sitter_license_date1},
+      license_photo1_name = #{license_photo1_name},
+      sitter_license_name2 = #{sitter_license_name2},
+      sitter_license_auth2 = #{sitter_license_auth2},
+      sitter_license_date2 = #{sitter_license_date2},
+      license_photo2_name = #{license_photo2_name},
+      sitter_license_name3 = #{sitter_license_name3},
+      sitter_license_auth3 = #{sitter_license_auth3},
+      sitter_license_date3 = #{sitter_license_date3},
+      license_photo3_name = #{license_photo3_name},
+      sitter_can = #{sitter_can},
+      sitter_cant = #{sitter_cant},
+      sitter_price_half = #{sitter_price_half},
+      sitter_price_full = #{sitter_price_full},
+      regdate = sysdate,
+      SITTERAPPROVAL_STATUS = '승인대기'
+      where user_idx = #{user_idx}
+   </update>
+	
+<!-- 7/4 -->
+<!-- 내가 만든 예약취소 -->
+	<update id="reserve_cancel" parameterType="int">
+		update RESERVE set reserve_cancel = -1, reserve_status = '예약취소'
+		where reserve_idx = #{reserve_idx}
+	</update>
+	
+	<!-- 내가 만든 예약 목록 불러오기 -->
+	<select id="reserve_list" resultType="vo.ReserveVO" parameterType="java.util.Map">
+		select * from 
+		(select row_number() over(order by reserve_regdate DESC) no, r.*
+		from (select * from RESERVE where reserve_user_idx = #{user_idx}) r)
+		where no BETWEEN #{start} AND #{end}
+	</select>
+	
+	<!-- 내가 만든 예악 수 (페이징용) -->
+	<select id="myreserve_count" resultType="int" parameterType="java.util.Map">
+		select count(*) from RESERVE
+		where reserve_user_idx = #{user_idx}
+	</select>
+	
+<!-- 받은 예약 목록 불러오기 (시터에게만 존재)-->
+	<select id="receive_list" resultType="vo.ReserveVO" parameterType="java.util.Map">
+		select * from 
+		(select row_number() over(order by reserve_regdate DESC) no, r.*
+		from (select * from RESERVE where reserve_sitter_idx = #{sitter_idx}) r)
+		where no BETWEEN #{start} AND #{end}
+	</select>
+	
+	<!-- 내가 받은 예약 수 (페이징용) -->
+	<select id="myreceive_count" resultType="int" parameterType="java.util.Map">
+		select count(*) from RESERVE
+		where reserve_sitter_idx = #{sitter_idx}
+	</select>
+	
+	<!-- 받은 예약 승인 -->
+	<update id="receive_confirm" parameterType="int">
+		update RESERVE set reserve_cancel = 1, reserve_status = '예약승인'
+		where reserve_idx = #{reserve_idx}
+	</update>
+	
+	<!-- 받은 예약 거절 -->
+	<update id="receive_decline" parameterType="int">
+	 	update RESERVE set reserve_cancel = -2, reserve_status = '예약거절'
+	 	where reserve_idx = #{reserve_idx}
+	</update>
+	
+<!-- 즐겨찾기 목록 (favorite테이블의 user_idx가 가진 sitter_idx의 sitter테이블 정보를 전부 가져간다)-->
+	<select id="favorite_list" resultType="vo.SitterVO" parameterType="int">
+		select * from (
+        select row_number() over (order by f.favorite_regdate DESC) no, s.*
+        from SITTER s
+        JOIN FAVORITE f ON s.sitter_idx = f.favorite_sitter_idx
+        WHERE f.favorite_user_idx = #{user_idx}
+        ) sub
+        WHERE sub.no BETWEEN #{start} AND #{end}
+	</select>
+	
+	<!-- 즐겨찾기 수 (페이징용) -->
+	<select id="myfavorite_count" resultType="int" parameterType="java.util.Map">
+		select count(*) from FAVORITE where favorite_user_idx = #{user_idx}
+	</select>
+	
+	<!-- 즐겨찾기 목록에서 삭제 -->
+	<delete id="favorite_delete" parameterType="java.util.Map">
+		delete from FAVORITE where favorite_user_idx = #{user_idx} AND favorite_sitter_idx = #{sitter_idx}
+	</delete>
+	
+	<select id="selectOne_findApproval" resultType="sitterappr"
+      parameterType= "int">
+      select * from SITTERAPPROVAL where user_idx=#{user_idx}
+   </select>
+   
+   <update id="update_sitterFormReason" parameterType="int">
+      update SITTERAPPROVAL set SITTERAPPROVAL_REASON = ''
+      where user_idx = #{user_idx}
+   </update>
+   
+   <!-- 07/09 결제관련 추가 -->
+   <select id="selectOne_reserve" resultType="reserve" parameterType="int">
+		select * from RESERVE where reserve_idx=#{reserve_idx}
+	</select>
+	
+   <select id="selectOne_sitter" resultType="sitter" parameterType="int">
+		select * from SITTER where sitter_idx=#{sitter_idx}
+	</select>
+	
+	<insert id="paySuccess" parameterType="payment">
+		insert into PAYMENT values(
+			idx_payment_seq.nextVal, #{payment_reserve_idx}, #{payment_user_idx},
+			#{payment_sitter_idx}, #{payment_user_name}, #{payment_sitter_name},
+			#{payment_uid}, #{payment_amount}, #{payment_method}, #{payment_status}
+		)
+	</insert>
+	
+	<select id="myPaymentList" resultType="payment">
+		select * from PAYMENT
+	</select>
+	
+	<update id="updateReserveStatus" parameterType="int">
+		update RESERVE set reserve_status='결제완료', reserve_cancel=3
+		where reserve_idx=#{payment_reserve_idx}
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+

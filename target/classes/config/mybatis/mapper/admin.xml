@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin">
+	<select id="id_check" resultType="admin" parameterType="String"> select *
+		from ADMIN where admin_id=#{admin_id}
+	</select>
+	<insert id="insert_admin" parameterType="admin"> insert into ADMIN
+		values( idx_admin_seq.nextVal, #{admin_type}, #{admin_id},
+		#{admin_pwd}, #{admin_name}, #{admin_tel}, sysdate )
+	</insert>
+	<!-- 가입한 회원들 조회 -->
+	<select id="client_list" resultType="user"
+		parameterType="java.util.Map">
+		select * from (select rank() over(order by user_idx desc) no, users.*
+		from (select * from users
+		<trim prefix="where" prefixOverrides="or|and">
+			<if test="user_idx!=null"> user_idx like '%'||#{user_idx}||'%' </if>
+			<if test="user_id!=null"> or user_id like '%'||#{user_id}||'%' </if>
+			<if test="user_name!=null"> or user_name like '%'||#{user_name}||'%' </if>
+			<if test="user_address!=null"> or user_address like '%'||#{user_address}||'%' </if>
+		</trim>
+		)users ) where no between #{start} and #{end}
+	</select>
+
+	<!-- 페이지 메뉴에 필요한 전체 게시글 수 -->
+	<select id="client_count" resultType="int"
+		parameterType="java.util.Map">
+		select count(*) from USERS
+		<trim prefix="where" prefixOverrides="or|and">
+			<if test="user_idx!=null"> user_idx like '%'||#{user_idx}||'%' </if>
+			<if test="user_id!=null"> or user_id like '%'||#{user_id}||'%' </if>
+			<if test="user_name!=null"> or user_name like '%'||#{user_name}||'%' </if>
+			<if test="user_address!=null"> or user_address like '%'||#{user_address}||'%' </if>
+		</trim>
+	</select>
+
+	<!-- 제출된 폼들 조회 -->
+	<select id="selectList_findList" resultType="sitter"
+		parameterType="java.util.Map">
+		select * from (select rank() over(order by user_idx desc) no, sitter.*
+		from (select * from sitter
+		<trim prefix="where" prefixOverrides="or|and">
+			<if test="user_idx!=null"> user_idx like '%'||#{user_idx}||'%' </if>
+			<if test="user_name!=null"> or user_name like '%'||#{user_name}||'%' </if>
+			<if test="sitter_title!=null"> or sitter_title like '%'||#{sitter_title}||'%' </if>
+			<if test="sitter_city!=null"> or sitter_city like '%'||#{sitter_city}||'%' </if>
+		</trim>
+		)sitter ) where no between #{start} and #{end}
+	</select>
+	<!-- 페이지 메뉴에 필요한 전체 게시글 수 -->
+	<select id="client_count_confirmForm" resultType="int"
+		parameterType="java.util.Map">
+		select count(*) from sitter
+		<trim prefix="where" prefixOverrides="or|and">
+			<if test="user_idx!=null"> user_idx like '%'||#{user_idx}||'%' </if>
+			<if test="user_name!=null"> or user_name like '%'||#{user_name}||'%' </if>
+			<if test="sitter_title!=null"> or sitter_title like '%'||#{sitter_title}||'%' </if>
+			<if test="sitter_city!=null"> or sitter_city like '%'||#{sitter_city}||'%' </if>
+		</trim>
+	</select>
+	<!-- 그래프 -->
+	<select id="findGender" parameterType="map" resultType="int"> SELECT
+		COUNT(*) FROM USERS WHERE user_gender in (#{gender1}, #{gender2})
+	</select>
+	<select id="selectOne_day" parameterType="map" resultType="int">
+		SELECT COUNT(*) FROM USERS WHERE TRUNC(USER_REGDATE) =
+		TO_DATE(#{date}, 'YYYY-MM-DD')
+	</select>
+	<select id="selectOne_userProvider" parameterType="map"
+		resultType="int"> SELECT COUNT(*) FROM USERS WHERE user_type = #{userType}
+	</select>
+	<select id="selectOne_ageRange" parameterType="map"
+		resultType="int"> SELECT COUNT(*) FROM USERS WHERE ( (SUBSTR(user_birth, 1,
+		2) BETWEEN '00' AND '23' AND 2000 + TO_NUMBER(SUBSTR(user_birth, 1,
+		2)) BETWEEN EXTRACT(YEAR FROM SYSDATE) - #{endAge} AND EXTRACT(YEAR
+		FROM SYSDATE) - #{startAge}) OR (SUBSTR(user_birth, 1, 2) NOT BETWEEN
+		'00' AND '23' AND 1900 + TO_NUMBER(SUBSTR(user_birth, 1, 2)) BETWEEN
+		EXTRACT(YEAR FROM SYSDATE) - #{endAge} AND EXTRACT(YEAR FROM SYSDATE)
+		- #{startAge}) )
+	</select>
+	<select id="selectOne_location" parameterType="map"
+		resultType="int"> SELECT COUNT(*) FROM USERS WHERE user_address LIKE '%' ||
+		#{location} || '%' </select>
+	<select id="selectDogSizeCount" parameterType="map"
+		resultType="int">
+		SELECT COUNT(*) FROM sitter WHERE
+		<choose>
+			<when test="sizeType == 'small'"> sitter_small = '소형견' </when>
+			<when test="sizeType == 'medium'"> sitter_medium = '중형견' </when>
+			<when test="sizeType == 'large'"> sitter_large = '대형견' </when>
+		</choose>
+	</select>
+	<select id="selectOne_sitterHouse" parameterType="map"
+		resultType="int"> SELECT COUNT(*) FROM sitter WHERE SITTER_HOUSE = #{house}
+	</select>
+	<select id="selectlicenseCount" parameterType="map"
+		resultType="int">
+		SELECT COUNT(*)
+		FROM (
+		SELECT CASE WHEN (LICENSE_PHOTO1_NAME =
+		'no_file' AND LICENSE_PHOTO2_NAME =
+		'no_file' AND LICENSE_PHOTO3_NAME
+		= 'no_file') THEN 0 WHEN
+		((LICENSE_PHOTO1_NAME = 'no_file' AND
+		LICENSE_PHOTO2_NAME = 'no_file')
+		OR (LICENSE_PHOTO2_NAME = 'no_file'
+		AND LICENSE_PHOTO3_NAME =
+		'no_file') OR (LICENSE_PHOTO1_NAME =
+		'no_file' AND LICENSE_PHOTO3_NAME
+		= 'no_file')) THEN 1 WHEN
+		(LICENSE_PHOTO1_NAME = 'no_file' OR
+		LICENSE_PHOTO2_NAME = 'no_file' OR
+		LICENSE_PHOTO3_NAME = 'no_file')
+		THEN 2 ELSE 3 END AS license_count
+		FROM SITTER ) license_counts WHERE
+		license_count =
+		<choose>
+			<when test="license == 'license0'"> 0 </when>
+			<when test="license == 'license1'"> 1 </when>
+			<when test="license == 'license2'"> 2 </when>
+			<when test="license == 'license3'"> 3 </when>
+		</choose>
+	</select>
+
+
+
+	<!-- 결제 리스트 -->
+	<select id="payment_list" resultType="vo.PaymentVO"
+		parameterType="java.util.Map">
+		select * from (
+		select rank() over(order by payment_idx desc) no,
+		payment.payment_idx,
+		payment.payment_reserve_idx,
+		payment.payment_user_idx,
+		payment.payment_sitter_idx,
+		payment.payment_user_name,
+		payment.payment_sitter_name,
+		payment.payment_uid,
+		payment.payment_amount,
+		payment.payment_method,
+		payment.payment_status,
+		payment.payment_date
+		from payment
+		<trim prefix="where" prefixOverrides="or|and">
+			<if test="payment_user_name != null">
+				payment_user_name like '%' || #{payment_user_name} || '%'
+			</if>
+			<if test="payment_sitter_name != null">
+				or payment_sitter_name like '%' || #{payment_sitter_name}
+				|| '%'
+			</if>
+			<if test="payment_uid != null">
+				or payment_uid like '%' || #{payment_uid} || '%'
+			</if>
+		</trim>
+		) payment
+		where no between #{start} and #{end}
+	</select>
+
+
+
+	<select id="payment_count" resultType="int"
+		parameterType="java.util.Map">
+		select count(*) from PAYMENT
+		<trim prefix="where" prefixOverrides="or|and">
+			<if test="payment_user_name!=null"> payment_user_name like '%'||#{payment_user_name}||'%'
+			</if>
+			<if test="payment_sitter_name!=null"> or payment_sitter_name like
+				'%'||#{payment_sitter_name}||'%' </if>
+			<if test="payment_uid!=null"> or payment_uid like '%'||#{payment_uid}||'%' </if>
+		</trim>
+	</select>
+
+	<select id="selectOne_day_payment" parameterType="map"
+		resultType="int">
+		select sum(payment_amount)
+		from payment
+		where
+		trunc(payment_date) = to_date(#{date}, 'yyyy-mm-dd')
+	</select>
+
+
+</mapper>

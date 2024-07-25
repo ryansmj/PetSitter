@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="admin_daoBean" class="dao.AdminDAO">
+		<property name="sqlSession" ref="sqlSessionBean" />
+	</bean>
+	
+	<bean id="doginfo_daoBean" class="dao.DoginfoDAO">
+		<constructor-arg name="sqlSession"
+			ref="sqlSessionBean" />
+	</bean>
+	
+	<bean id="inquiry_daoBean" class="dao.InquiryDAO">
+		<constructor-arg name="sqlSession"
+			ref="sqlSessionBean" />
+	</bean>
+	
+	<bean id="mypage_daoBean" class="dao.MyPageDAO">
+		<property name="sqlSession" ref="sqlSessionBean" />
+	</bean>
+	
+	<bean id="notice_daoBean" class="dao.NoticeDAO">
+		<constructor-arg name="sqlSession"
+			ref="sqlSessionBean" />
+	</bean>
+	
+	<!-- 7/9 -->	
+	<bean id="oneinquiry_daoBean" class="dao.OneInquiryDAO">
+		<property name="sqlSession" ref="sqlSessionBean"/>
+	</bean>
+	
+	<bean id="review_daoBean" class="dao.ReviewDAO">
+		<constructor-arg name="sqlSession"
+			ref="sqlSessionBean" />
+	</bean>
+	
+	<bean id="sitter_daoBean" class="dao.SitterDAO">
+		<property name="sqlSession" ref="sqlSessionBean" />
+	</bean>
+	
+	<bean id="user_test_daoBean" class="dao.UserDAO">
+		<property name="sqlSession" ref="sqlSessionBean" />
+	</bean>
+
+
+</beans>

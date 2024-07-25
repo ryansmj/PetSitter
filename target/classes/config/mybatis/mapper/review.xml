@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="review">
+   
+    <select id="selectList" parameterType="map" resultType="vo.ReviewVO">
+    SELECT * FROM (
+        SELECT 
+            RANK() OVER (ORDER BY review_idx DESC) no, 
+            review_idx,
+            review_title,
+            review_content,
+            review_city,
+            review_regdate,
+            review_star,
+            review_photo_name,
+            review_user_idx,
+            review_sitter_name,
+            review_service,
+            CASE
+                WHEN LENGTH(review_user_name) = 1 THEN review_user_name
+                WHEN LENGTH(review_user_name) = 2 THEN 
+                    SUBSTR(review_user_name, 1, 1) || '*'
+                ELSE 
+                    SUBSTR(review_user_name, 1, 1) ||
+                    LPAD('*', LENGTH(review_user_name) - 2, '*') ||
+                    SUBSTR(review_user_name, -1)
+            END AS review_user_name
+        FROM review
+        <where>
+            <if test="review_sitter_name != null and review_sitter_name != ''">
+                review_sitter_name LIKE '%' || #{review_sitter_name} || '%'
+            </if>
+            <if test="review_title != null and review_title != ''">
+                AND review_title LIKE '%' || #{review_title} || '%'
+            </if>
+            <if test="review_service != null and review_service != ''">
+                AND review_service LIKE '%' || #{review_service} || '%'
+            </if>
+        </where>
+    ) 
+    WHERE no BETWEEN #{start} AND #{end}
+</select>
+
+    
+    <insert id="review_insert" parameterType="vo.ReviewVO"> 
+      insert into review values(
+         idx_review_seq.nextVal,
+         #{review_user_idx},
+         #{review_sitter_idx},
+         #{review_city},
+         #{review_service},
+         #{review_star},
+         sysdate,
+         #{review_user_name},
+         #{review_sitter_name},
+         #{review_title},
+         #{review_content},
+         #{review_trans_idx},
+         #{review_photo_name}
+      )
+   </insert>
+   
+   
+   <select id="review_count" resultType="int"
+           parameterType="java.util.Map">
+           
+      select count(*) from review
+      <trim prefix="where" prefixOverrides="or|and">
+         <if test="review_sitter_name!=null">
+            review_sitter_name like '%'||#{review_sitter_name}||'%'
+         </if>
+            
+         <if test="review_title!=null">
+            or review_title like '%'||#{review_title}||'%'
+         </if>
+         
+         <if test="review_service!=null">
+            or review_service like '%'||#{review_service}||'%'
+         </if>   
+      </trim>
+      
+   </select>
+   
+      <delete id="review_delete" parameterType="int">
+      delete from review where review_user_idx=#{review_user_idx}      
+      </delete>
+   
+   
+    
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

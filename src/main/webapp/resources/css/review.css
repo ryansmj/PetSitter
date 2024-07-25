@@ -1,0 +1,180 @@
+@charset "UTF-8";
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: NanumGothicCoding;
+		}
+		
+		main {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			font-family: Arial, sans-serif;
+			background-color: white;
+			color: #333;
+			margin: 0;
+			padding: 0;
+		}
+		
+		h3{
+			color: gray;
+		}
+		
+		h1 {
+			padding: 20px; 
+			font-family : 'Gamja Flower', cursive;
+			font-size: 50px;
+			text-align: center;
+			color: black;
+			margin-top: 20px;
+			font-family: 'Gamja Flower', cursive;
+		}
+		
+		.sitter_review{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+		
+		
+		p{
+			font-family: Nanum Gothic;
+			font-weight: bold;
+		}
+		
+		.select_menu {
+			text-align: center;
+			margin: 20px 0;
+			padding: 15px;
+			
+		}
+		
+		.review-index {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			padding: 0;
+			list-style: none;
+		}
+		
+		.index-item {
+			font-family: Nanum Gothic; 
+			background-color : #C4DEFF;
+			color: black;
+			padding: 10px 15px;
+			margin: 5px;
+			border-radius: 50px;
+			cursor: pointer;
+			transition: background-color 0.3s;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+		
+		.index-item:hover {
+			background-color: #79AAFF;
+		}
+		
+		.review-container {
+			justify-content: center;
+			align-items: center;
+			width: 1000px;
+			margin: 20px auto;
+			padding: 0 15px;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 20px; /* Add gap between items */
+			
+		}
+		
+		h2{
+			font-family: Nanum Gothic;
+			font-weight: bold;
+		}
+		
+		
+		.review {
+			width: 450px;
+			background-color : white;
+			margin: 10px;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			box-sizing: border-box;
+			background-color:#EBF7FF;
+		}
+		
+		.review:hover {
+			transform: scale(1.02);
+		}
+		
+		.star-rating{
+			color: yellow;
+			text-shadow: 1px 1px 0.1px #EDA900;
+		}
+		
+		.title {
+			cursor: pointer;
+			padding: 10px 0;
+		}
+		
+		.title h2 {
+			margin: 0;
+		}
+		
+		.content {
+			display: none;
+			margin-top: 10px;
+			padding-top: 10px;
+			border-top: 1px solid #ddd;
+		}
+		
+		.title.open h2 {
+			color: #6799FF;
+		}
+		
+		.content h3 {
+			padding:5px 0 5px 0;
+			font-family: Nanum Gothic;
+			font-weight: bold;
+		}
+		
+		.align-center {
+			text-align: center;
+			margin-top: 20px;
+		}
+		
+		.align-right {
+			text-align: right;
+			
+			
+}
+		input[type="button"]{
+			width:80px;
+			padding: 10PX;
+			border: none;
+			background-color: #C4DEFF;
+			border-radius: 5px;
+		}
+		
+		input[type="button"]:hover{
+			background-color: #5586EB;
+		}
+		
+		.cearch-containa{
+			display: flex;
+			justify-content: flex-start;
+			align-items: flex-start;
+		}
+		
+		.page-menu{
+			padding-left: 50%; 
+		}
+		
+		.write-btn{
+			padding-bottom: 20px;
+			padding-right: 55%;
+		}
+		

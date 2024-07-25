@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+	
+	<!-- 07/10수정 -->
+   <select id="id_check" resultType="user" parameterType="String">
+      select * from USERS u left JOIN  DOGINFO d 
+      on u.user_idx = d.dog_user_idx where u.user_id=#{user_id}
+   </select>
+	
+	<select id="tel_check" resultType="user" parameterType="String">
+		select * from USERS where user_tel=#{user_tel}
+	</select>
+	
+	<insert id="insert_list" parameterType="user">
+      insert into USERS values(
+         idx_user_seq.nextval,
+         #{user_type},
+         #{user_id},
+         #{user_pwd},
+         #{user_name},
+         #{user_tel},
+         #{user_birth},
+         #{user_gender},
+         #{user_email},
+         #{user_postcode},
+         #{user_address},
+         #{user_detailaddress},
+         #{user_extraaddress},
+         sysdate
+      )
+   </insert>
+	
+	<select id="email_check" resultType="user" parameterType="String">
+		select * from USERS where user_email=#{user_email}
+	</select>
+
+	<select id="find_id" resultType="user" parameterType="user">
+		select * from USERS where user_name=#{user_name} 
+		and user_email=#{user_email}
+	</select>
+	
+	<select id="take_id" resultType="user" parameterType="String">
+		select * from USERS where user_email=#{user_email}
+	</select>
+	
+	<select id="find_pwd" resultType="user" parameterType="user">
+		select * from USERS where user_id=#{user_id} and user_name=#{user_name} 
+		and user_email=#{user_email}
+	</select>
+	
+	<update id="update_pwd" parameterType="user">
+		update USERS set user_pwd=#{user_pwd} where user_email=#{user_email}
+	</update>
+	
+	
+	<!-- 어드민 -->
+	<select id="client_list" resultType="user">
+		select * from USERS
+	</select>
+	
+	<select id="select_list" resultType="user" parameterType="java.util.Map">
+		select * from USERS 
+			<where>
+				<if test="user_idx!=null">
+					user_idx like '%'||#{user_idx}||'%'
+				</if>
+				<if test="user_id!=null">
+					user_id like '%'||#{user_id}||'%'
+				</if>
+				<if test="user_name!=null">
+					user_name like '%'||#{user_name}||'%'
+				</if>
+				<if test="user_address!=null">
+					user_address like '%'||#{user_address}||'%'
+				</if>
+			</where>
+	</select>
+	
+	<update id="update_userToProvider" parameterType="int">
+         update USERS set user_type='1' where user_idx=#{user_idx}
+   </update>
+	
+<!--user_type이 1이면 sitter정보 가져가기  -->
+	<select id="select_sitter" resultType="vo.SitterVO" parameterType="int">
+		select * from SITTER where user_idx = #{user_idx}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="notice">
+	
+	 <select id="notice_list" resultType="vo.NoticeVO">
+	 select * from notice
+	 </select>
+	 
+	
+	<insert id="notice_insert" parameterType="vo.NoticeVO">
+		insert into notice values(
+			idx_notice_seq.nextVal, 
+			#{notice_title}, 
+			#{notice_name}, 
+			#{notice_content},
+			#{notice_pwd},
+			0,
+			0,
+			sysdate,
+		)
+	</insert>
+	
+	
+	 <!-- 게시글 한건 조회 -->
+	<select id="select_one" parameterType="int" resultType="vo.NoticeVO">
+		select * from notice
+		 where notice_idx=#{notice_idx}
+	</select>
+	
+	 
+     <update id="notice_update_readhit" parameterType="int">
+		update notice set
+		notice_readhit = notice_readhit + 1
+		where notice_idx = #{notice_idx}
+		
+	 </update>
+    
+    
+    <!-- <select id="gong_count" resultType="int"
+	        parameterType="java.util.Map">
+		select count(*) from gong
+		
+		myBatis 동적쿼리 : 
+		상황에 따라 동적인 SQL문장이 실행될 수 있도록 하는 기능
+		
+		prefix 쿼리를 붙여서 출발
+		where or, where and와 같이 문법적으로 사용불가한
+		     or, and로 시작되는 상황일 때 이를 제거해주는 속성이 prefixOverrides다
+		<trim prefix="where" prefixOverrides="or|and">
+			<if test="name!=null">
+				name like '%'||#{name}||'%'
+			</if>
+				
+			<if test="subject!=null">
+				or subject like '%'||#{subject}||'%'
+			</if>
+			
+			<if test="content!=null">
+				or content like '%'||#{content}||'%'
+			</if>	
+		</trim>
+		
+	</select> -->
+    
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="doginfo">
+
+<select id="doginfo_list" parameterType="int" resultType="vo.DoginfoVO">
+    SELECT * FROM doginfo WHERE dog_user_idx = #{user_idx}
+</select>
+
+<insert id="doginfo_insert" parameterType="vo.DoginfoVO">
+		insert into doginfo values(
+			idx_doginfo_seq.nextVal, 
+			#{dog_name}, 
+			#{dog_age}, 
+			#{dog_size},
+			#{dog_care},
+			#{dog_user_idx},
+			#{dog_photo_name}
+		)
+	</insert>
+	
+	<select id="select_one" resultType="doginfo" parameterType="int">
+		select * from doginfo where dog_idx=#{dog_idx}
+	</select>
+	
+	
+	<update id="doginfo_update" parameterType="doginfo">
+    update doginfo set 
+    dog_name=#{dog_name}, 
+    dog_age=#{dog_age},
+    dog_size=#{dog_size},
+    dog_care=#{dog_care}, 
+    dog_photo_name=#{dog_photo_name}
+    where dog_idx=#{dog_idx}
+	</update>
+	
+		<delete id="doginfo_delete" parameterType="int">
+		delete from doginfo where dog_idx=#{dog_idx}		
+		</delete>
+
+	<select id="count_dogs_by_user" parameterType="int" resultType="int">
+          SELECT COUNT(*) FROM doginfo WHERE dog_user_idx = #{user_idx}
+     </select>
+	
+	
+</mapper>

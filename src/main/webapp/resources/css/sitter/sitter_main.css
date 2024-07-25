@@ -1,0 +1,313 @@
+@charset "UTF-8";
+
+/* 기본적으로 마진과 패딩을 초기화하고 박스 모델을 경계 상자로 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: NanumGothicCoding;
+}
+
+/* HTML과 BODY를 전체 높이에 맞춤 */
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+/* 전체 페이지를 감싸는 컨테이너 */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* 전체 높이를 채우도록 설정 */
+}
+
+/* 본문의 글꼴과 배경색 설정 */
+body {
+    font-family: NanumGothicCoding;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+}
+
+
+a{
+	text-decoration: none;
+	color: white; /* 부모 요소의 색상 상속 */
+	transition: color 0.3s ease, background-color 0.3s ease; /* 색상 변경 애니메이션 */
+}
+
+a:hover{
+	color: black;
+}
+
+/* 헤더 스타일 */
+#header {
+	height:120px;
+    background-image:url("/project/resources/image/돌봐줄개.jpg");
+    background-size: contain;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-color:#6799FF;
+    color: black;
+    padding: 10px 20px;
+    text-align: left;
+    border-bottom: 3px solid black;
+    display: flex; /* 플렉스 컨테이너로 설정하여 내부 요소들을 배치 */
+    align-items: flex-end;
+    justify-content:flex-end;
+}
+
+/* .main_name {
+    text-align: left;
+    font-size: 50px;
+    font-weight: bold;
+    color: #F2CB61;
+    margin :30px 0 0 30px;
+    text-shadow: 2px 2px 4px rgba(0, 34, 102, 0.5); 그림자 효과
+    font-family: "Gamja Flower", sans-serif;
+    font-weight: 400;
+	font-style: normal;
+	
+} */
+
+
+
+
+
+/* 메뉴 컨테이너 스타일 */
+#menu {
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    text-shadow: 2px 2px 4px rgba(0, 10, 10, 0.1);
+    
+}
+
+/* 메인 메뉴와 사용자 메뉴 스타일 */
+#menu .main-menu,
+#menu .user-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    
+}
+
+/* 메인 메뉴 스타일 */
+#menu .main-menu {
+    flex: 1;
+    justify-content: flex-end;
+    margin-right: 60px;
+}
+
+/* 사용자 메뉴 스타일 */
+#menu .user-menu {
+    justify-content: flex-end;
+    
+}
+
+/* 메뉴 항목 공통 스타일 */
+#menu li {
+    margin: 0 10px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 5px;
+    position: relative;
+    
+}
+
+/* 메뉴 항목에 호버 시 색상 변경 */
+#menu li:hover {
+    color: black;
+    background-color: #FFFFD2;
+}
+
+/* 공지사항 메뉴 스타일 */
+.notice {
+    display: none;
+    position: absolute;
+    background-color: #FFFFD2;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    /* 삭제 padding: none; */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000; /* 다른 요소 위에 표시하기 위해 z-index 설정 */
+}
+
+.notice li a{
+	color: black;
+}
+.notice li {
+	/* 추가 */ list-style : none; 
+    color: black;
+    padding: 5px 0;
+    cursor: pointer;
+    
+}
+
+.notice li:hover {
+    color: black;
+    background-color: #FAED7D;
+}
+
+
+
+
+/* 호버 시 하위 메뉴 표시 */
+#menu li:hover .notice {
+    display: block;
+    opacity: 1;
+}
+
+main{
+	flex: 1;
+	display: flex;
+	width: 100%;
+
+}
+/* 본문의 글꼴과 배경색 설정 */
+#body {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end; /* 오른쪽 정렬 수정 */
+    align-items: center; /* 세로 가운데 정렬 수정 */
+    margin: 0;
+    background-color: #FAF5FF;
+    width: 100%;
+}
+
+
+/* 로그인 폼 스타일 */
+#login {
+    width: 450px;
+    padding: 20px;
+    height:410px;
+    border: 1px solid #ccc;
+    background-color: #6799FF;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    text-align: center; /* 가운데 정렬 추가 */
+    margin-right: 20px;
+    padding-left: 20px;
+ 
+}
+
+
+/* 로그인 폼 스타일 */
+#login h2 {
+    margin-bottom: 10px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 10, 10, 0.1);
+	font-size: 30px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+    
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 10, 10, 0.1);
+	font-size: 20px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+/* 추가 */
+.login_btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #F2CB61;
+    border: none;
+    border-radius: 4px;
+    color: black;
+    font-size: 25px;
+    cursor: pointer;
+    
+}
+
+
+.login_btn:hover {
+    background-color: white;
+}
+
+
+
+.join_btn {
+        width: calc(100% / 3 - 10px);
+        padding: 10px;
+        background-color: #6799FF;
+        border: none;
+        border-radius: 4px;
+        color: black;
+        font-size: 17px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+.join_btn:hover {
+    background-color: white;
+ }
+ 
+
+.find_IdPwd_btn{
+		width: calc(100% / 10px);
+        padding: 10px;
+        background-color: #6799FF;
+        border: none;
+        border-radius: 4px;
+        color: black;
+        font-size: 17px;
+        cursor: pointer;
+        margin-top: 10px;
+}
+
+.find_IdPwd_btn:hover{
+	background-color: white;
+}
+
+/* 사진 폼 스타일 */
+#photo {
+	
+    margin:  0 20px 0 10px ;
+    width:75%;
+    
+}
+
+
+
+
+
+
+/* 푸터 스타일 */
+#footer {
+    background-color: #ECEBFF;
+    color: gray;
+    text-align: left;
+    padding: 10px 20px;
+    flex-shrink: 0; /*푸터가 줄어들지 않도록 설정 */
+    margin-top: auto; /* 상단 여백 자동으로 설정 */
+}
+
+

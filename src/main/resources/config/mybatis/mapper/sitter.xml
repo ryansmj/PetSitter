@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sitter">
+<!-- 모든 시터 목록-->
+	<select id="sitter_list" resultType="vo.SitterVO" parameterType="java.util.Map">
+		SELECT * FROM (
+        SELECT 
+            ROW_NUMBER() OVER (
+                <choose>
+                    <when test="orderby == 'recent'">
+                        ORDER BY sit.regdate DESC
+                        
+                    </when>
+                    <when test="orderby == 'lowhalf'">
+                        ORDER BY sit.sitter_price_half
+                    </when>
+                    <when test="orderby == 'lowfull'">
+                        ORDER BY sit.sitter_price_full
+                    </when>
+                    <otherwise>
+                        ORDER BY sit.regdate DESC
+                    </otherwise>
+                </choose>
+            ) no,
+            sit.* 
+        FROM (
+            SELECT sit.*
+            FROM SITTER sit
+            JOIN sitterapproval sa ON sit.user_idx = sa.user_idx
+            WHERE sa.sitterapproval_status = '승인완료' AND sit.user_idx != #{user_idx} <!-- 7/9 -->
+            <if test="vo.sitter_city != null and vo.sitter_city != ''">
+                AND sit.sitter_city LIKE '%' || #{vo.sitter_city} || '%'
+            </if>
+            <if test="vo.sitter_district != null and vo.sitter_district != ''">
+                AND sit.sitter_district LIKE '%' || #{vo.sitter_district} || '%'
+            </if>
+            <if test="vo.sitter_small != null and vo.sitter_small != ''">
+                AND sit.sitter_small LIKE '%' || #{vo.sitter_small} || '%'
+            </if>
+            <if test="vo.sitter_medium != null and vo.sitter_medium != ''">
+                AND sit.sitter_medium LIKE '%' || #{vo.sitter_medium} || '%'
+            </if>
+            <if test="vo.sitter_large != null and vo.sitter_large != ''">
+                AND sit.sitter_large LIKE '%' || #{vo.sitter_large} || '%'
+            </if>
+            <if test="vo.sitter_care != null and vo.sitter_care != ''">
+                AND sit.sitter_care LIKE '%' || #{vo.sitter_care} || '%'
+            </if>
+            <if test="vo.sitter_walk != null and vo.sitter_walk != ''">
+                AND sit.sitter_walk LIKE '%' || #{vo.sitter_walk} || '%'
+            </if>
+            <if test="vo.sitter_pickup != null and vo.sitter_pickup != ''">
+                AND sit.sitter_pickup LIKE '%' || #{vo.sitter_pickup} || '%'
+            </if>
+        ) sit
+    )
+    WHERE no BETWEEN #{start} AND #{end}
+	</select>
+
+<!-- 시터 등록 -->		
+	<insert id="sitter_insert" parameterType="vo.SitterVO">
+		insert into SITTER(
+		sitter_idx,
+		user_idx,
+		user_name,
+		sitter_title,
+		sitter_city,
+		sitter_district,
+		sitter_care,
+		sitter_walk,
+		sitter_pickup,
+		sitter_bath,
+		sitter_olddog,
+		sitter_house,
+		sitter_dogcount,
+		sitter_kid,
+		sitter_homecam,
+		sitter_fence,
+		sitter_pet,
+		sitter_small,
+		sitter_medium,
+		sitter_large,
+		sitter_start_time,
+		sitter_end_time,
+		sitter_introduce,
+		house1_name,
+		house2_name,
+		house3_name,
+		sitter_license_name1,
+		sitter_license_auth1,
+		sitter_license_date1,
+		license_photo1_name,
+		sitter_license_name2,
+		sitter_license_auth2,
+		sitter_license_date2,
+		license_photo2_name,
+		sitter_license_name3,
+		sitter_license_auth3,
+		sitter_license_date3,
+		license_photo3_name,
+		sitter_can,
+		sitter_cant,
+		sitter_price_half,
+		sitter_price_full,
+		regdate,
+		sitterApproval_status
+		) values(
+		idx_sitter_seq.nextVal,
+		#{user_idx},
+		#{user_name},
+		#{sitter_title},
+		#{sitter_city},
+		#{sitter_district},
+		#{sitter_care},
+		#{sitter_walk},
+		#{sitter_pickup},
+		#{sitter_bath},
+		#{sitter_olddog},
+		#{sitter_house},
+		#{sitter_dogcount},
+		#{sitter_kid},
+		#{sitter_homecam},
+		#{sitter_fence},
+		#{sitter_pet},
+		#{sitter_small},
+		#{sitter_medium},
+		#{sitter_large},
+		#{sitter_start_time},
+		#{sitter_end_time},
+		#{sitter_introduce},
+		#{house1_name},
+		#{house2_name},
+		#{house3_name},
+		#{sitter_license_name1},
+		#{sitter_license_auth1},
+		#{sitter_license_date1},
+		#{license_photo1_name},
+		#{sitter_license_name2},
+		#{sitter_license_auth2},
+		#{sitter_license_date2},
+		#{license_photo2_name},
+		#{sitter_license_name3},
+		#{sitter_license_auth3},
+		#{sitter_license_date3},
+		#{license_photo3_name},
+		#{sitter_can},
+		#{sitter_cant},
+		#{sitter_price_half},
+		#{sitter_price_full},
+		sysdate,
+		'승인대기'
+		)
+	</insert>
+
+<!-- 시터 승인여부 -->
+	<insert id="sitter_approval_insert" parameterType="sitter">
+		insert into sitterApproval values(
+		idx_sitterApproval_seq.nextVal,
+		#{user_idx},
+		'승인대기',
+		'-',
+		sysdate
+		)
+	</insert>
+
+	<select id="selectOne_idx" resultType="sitter"
+		parameterType="sitter">
+		select * from SITTER where user_idx=#{user_idx} and
+		sitter_idx=#{sitter_idx}
+	</select>
+
+	<select id="selectList_findOne" resultType="sitter"
+		parameterType="sitter">
+		select * from SITTER where user_idx=#{user_idx}
+	</select>
+
+<!-- 군/구 목록 -->	
+	<select id="district_list" resultType="String"
+		parameterType="String">
+		select district from region where city LIKE '%' ||
+		#{city} || '%'
+	</select>
+	
+	<update id="update_sitterApproval_comfirm" parameterType="sitter">
+      update SITTER set sitterApproval_status='승인완료' where user_idx=#{user_idx}
+   </update>
+	
+	 <update id="update_sitterApprovalReason_comfirm" parameterType="sitter">
+      update SitterApproval set sitterApproval_status='승인완료' where user_idx=#{user_idx}
+   </update>
+
+<!-- 모든 시터 수 (페이징용) -->	
+	<select id="sitter_count" resultType="int" parameterType="java.util.Map">
+		select count(*) from sitter
+		<trim prefix="where" prefixOverrides="or|and">
+	        <if test="vo.sitter_city != null and vo.sitter_city != ''">
+	            sitter_city LIKE '%' || #{vo.sitter_city} || '%'
+	        </if>
+	        
+	        <if test="vo.sitter_district != null and vo.sitter_district != ''">
+	            and sitter_district LIKE '%' || #{vo.sitter_district} || '%'
+	        </if>
+	        
+	        <if test="vo.sitter_small != null and vo.sitter_small != ''">
+	            and sitter_small LIKE '%' || #{vo.sitter_small} || '%'
+	        </if>
+	        
+	        <if test="vo.sitter_medium != null and vo.sitter_medium != ''">
+	            and sitter_medium LIKE '%' || #{vo.sitter_medium} || '%'
+	        </if>
+	        
+	        <if test="vo.sitter_large != null and vo.sitter_large != ''">
+	            and sitter_large LIKE '%' || #{vo.sitter_large} || '%'
+	        </if>
+	        
+	        <if test="vo.sitter_care != null and vo.sitter_care != ''">
+	            and sitter_care LIKE '%' || #{vo.sitter_care} || '%'
+	        </if>
+	        
+	        <if test="vo.sitter_walk != null and vo.sitter_walk != ''">
+	            and sitter_walk LIKE '%' || #{vo.sitter_walk} || '%'
+	        </if>
+	        
+	        <if test="vo.sitter_pickup != null and vo.sitter_pickup != ''">
+	            and sitter_pickup LIKE '%' || #{vo.sitter_pickup} || '%'
+	        </if>
+	        
+	    </trim>
+	</select>
+	
+<!-- 시터 자세히 보기 -->
+	<select id="sitter_select_one" resultType="vo.SitterVO" parameterType="vo.SitterVO">
+		select * from SITTER where sitter_idx = #{sitter_idx}
+	</select>
+	
+<!-- 시터 주소 (users에서 가져온다)-->
+	<select id="user_address" resultType="String" parameterType="vo.SitterVO">
+		select user_address from USERS where user_idx = #{user_idx}
+	</select>
+	
+<!-- 예약하기 테이블에 입력 / 수정 7/ 4-->
+	<insert id="reserve_insert" parameterType="vo.ReserveVO">
+		insert into RESERVE values(
+			idx_reserve_seq.nextVal,
+			#{reserve_user_idx},
+			#{reserve_sitter_idx},
+			#{reserve_user_name},
+			#{reserve_sitter_name},
+			#{reserve_city},
+			#{reserve_district},
+			#{reserve_size},
+			#{reserve_care},
+			#{reserve_walk},
+			#{reserve_pickup},
+			#{reserve_type},
+			#{reserve_start},
+			#{reserve_end},
+			#{reserve_memo},
+			'시터승인대기',
+			sysdate,
+			0
+		)
+	
+	</insert>
+
+<!-- 즐겨찾기에 존재하는지 확인  -->	
+	<select id="favorite_exists" parameterType="java.util.Map" resultType="int">
+	    SELECT COUNT(1)
+	    FROM FAVORITE
+	    WHERE favorite_user_idx = #{user_idx}
+	    AND favorite_sitter_idx = #{sitter_idx}
+	</select>
+
+<!-- 즐겨찾기에 없으면 insert -->
+	<insert id="favorite_insert" parameterType="java.util.Map">
+	    INSERT INTO FAVORITE (favorite_idx, favorite_user_idx, favorite_sitter_idx, favorite_regdate)
+	    VALUES (idx_favorite_seq.nextVal, #{user_idx}, #{sitter_idx}, sysdate)
+	</insert>
+	
+<!-- 7/8 댕시터 지원하기 클릭시 시터 테이블에 user_idx 존재여부 확인  -->	
+	<select id="sitter_submitted_count" resultType="int" parameterType="int">
+		select count(*) from SITTER where user_idx = #{user_idx}
+	</select>	
+	
+	
+	
+	
+	
+	
+	<!-- 반려사유 -->
+	<update id="update_SitterApprovalRefuseReason" parameterType="map">
+      update SITTERAPPROVAL set sitterapproval_reason=#{refuseReason}, sitterapproval_status='승인대기' 
+      where user_idx=#{user_idx}
+   </update> 
+   
+   <update id="update_sitterApprovalStatus" parameterType="int">
+      update SITTER set sitterapproval_status='승인대기' 
+      where user_idx=#{user_idx}
+   </update> 
+   
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

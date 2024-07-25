@@ -1,0 +1,162 @@
+   @charset "UTF-8";
+   * {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+       font-family: NanumGothicCoding;
+   }
+   
+   /* HTML과 BODY를 전체 높이에 맞춤 */
+   html, body {
+       height: 100%;
+       width: 100%;
+   }
+   
+   /* 전체 페이지를 감싸는 컨테이너 */
+   .wrapper {
+       display: flex;
+       flex-direction: column;
+       
+   }
+   
+   
+   /* 본문의 글꼴과 배경색 설정 */
+   #body {
+       padding: 20px;
+       display: flex;
+      flex: 1;
+       justify-content: flex-end; /* 오른쪽 정렬 수정 */
+       align-items: center; /* 세로 가운데 정렬 수정 */
+       margin: 0;
+       background-color: white;
+       width: 100%;
+       height: 100%;
+   }
+   
+   #user_info{
+      display:flex;
+      flex-direction:column;  /* 요소들을위에서 아래 방향으로 배치*/
+      flex-shrink:0; /* 요소들의 크기가 줄어들지 않음 */
+      width: 400px;
+       padding: 20px;
+       height:300px;
+       margin-top:5px;
+       margin-bottom:5px;
+       font-size: 18px;
+       font:bold;
+       border: 1px solid #ccc;
+       background-color: #6799FF;
+       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+       border-radius: 25px;
+       text-align: left; 
+       color: white;
+       margin-left: auto; /* 왼쪽 여백을 자동으로 설정하여 오른쪽에 배치 */
+       margin-right: 20px; /* 오른쪽 여백을 추가 */
+       text-shadow: 2px 2px 4px rgba(0, 10, 10, 0.2);
+   }
+   
+   .user_pet_info{
+      padding:5px;
+      font-family: Nanum Gothic;
+      font-weight:bold;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+   }
+   
+   #send_btn{
+      display: flex;
+      justify-content: center;
+      align-items:center;
+      box-sizing: border-box;
+      padding-top: 10px;
+   }
+   
+   #pet_info{
+      padding: 15px;
+      background: #8BBDFF;
+      color:black;
+      border-radius: 10px;
+   }
+   
+   p{
+      font-family: Nanum Gothic;
+      font-weight: bold;
+      
+   }
+   
+   .pet_btn{
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #F2CB61;
+      font-family: Nanum Gothic;
+      font-weight:bold;
+   }
+   
+   .pet_btn:hover{
+      background-color: white;
+   }
+   
+   .user_name{
+      background-color: rgba(255,255,255,0.3);
+      border-radius:10px;
+      padding: 5px; 
+      margin: 5px;
+      color: #4C4C4C;
+   }
+   .pet p{
+      padding: 10px;
+   }
+   
+   .pet_name{
+      background-color: rgba(255,255,255,0.3);
+      border-radius:10px;
+      color: #4C4C4C;
+      padding: 5px; 
+      margin: 5px;
+   }
+   
+   .after{
+      font-family: Nanum Gothic;
+      font-weight:bold;
+      border:none;
+      font:bold;
+      font-size:15px;
+      border-radius:4px;
+      color:black;
+      background-color: #F2CB61;
+      margin: 5px;
+      padding: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 10, 10, 0.2);
+   }
+   
+   
+   
+   .after:hover{
+      background-color: white;
+   }
+   
+   .my_pet{
+      text-align:left;
+      
+   }
+   
+   /* 사진 폼 스타일 */
+   #photo {
+      margin-top:50px;
+       overflow: hidden;
+       position: relative;
+       margin-right: 20px;
+       width: 90%;
+   }
+   
+   #photo img {
+       width: 100%;
+       height: auto;
+       display: block;
+       border-radius: 10px;
+   }
+   
+
+   

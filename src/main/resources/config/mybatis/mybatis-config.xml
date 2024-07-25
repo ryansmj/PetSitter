@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "HTTP://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="useGeneratedKeys" value="true" />
+		<setting name="defaultExecutorType" value="REUSE" />
+		<setting name="jdbcTypeForNull" value="NULL"/> <!--jdbcTypeForNull을 설정하여 기본 JdbcType을 지정  -->
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="vo.UserVO" alias="user"/>
+		<typeAlias type="vo.AdminVO" alias="admin"/>
+		<typeAlias type="vo.SitterVO" alias="sitter"/>
+		<typeAlias type="vo.InquiryVO" alias="inquiry"/>
+		<typeAlias type="vo.NoticeVO" alias="notice"/>
+		<typeAlias type="vo.ReviewVO" alias="review"/>
+		<typeAlias type="vo.SitterApprovalVO" alias="sitterappr"/>
+		<typeAlias type="vo.ReserveVO" alias="reserve"/>
+		<typeAlias type="vo.DoginfoVO" alias="doginfo"/>
+		<typeAlias type="vo.PaymentVO" alias="payment"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="config/mybatis/mapper/user.xml" />
+		<mapper resource="config/mybatis/mapper/mypage.xml" />
+		<mapper resource="config/mybatis/mapper/sitter.xml" />
+		<mapper resource="config/mybatis/mapper/admin.xml" />
+		<mapper resource="config/mybatis/mapper/inquiry.xml" />
+		<mapper resource="config/mybatis/mapper/notice.xml" />
+		<mapper resource="config/mybatis/mapper/doginfo.xml" />
+		<mapper resource="config/mybatis/mapper/review.xml" />
+		<mapper resource="config/mybatis/mapper/oneinquiry.xml" />
+	</mappers>
+</configuration>
+
+
+

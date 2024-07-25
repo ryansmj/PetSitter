@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+	* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: NanumGothicCoding;
+		}
+		
+		main {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			font-family: Arial, sans-serif;
+			background-color: white;
+			color: #333;
+			margin: 0;
+			padding: 0;
+		}
+
+		.oneinquiry_form{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+		}
+	
+	
+		h2{
+			font-family : 'Gamja Flower', cursive;
+			font-size: 50px;
+			padding: 20px;
+			text-align: center;
+		}
+		
+		.oneinquiry_top{
+			display: flex;
+			align-items: flex-start;
+			justify-content: flex-start;
+			flex-direction: column;
+			margin-bottom: 20px;
+			
+		}
+		
+		p{
+			font-family: Nanum Gothic;
+			font-weight: bold;
+			padding-bottom: 10px;
+			
+		}
+		
+	

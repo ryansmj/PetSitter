@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+https://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 이메일 인증 처리 -->
+	<!-- 메일 보내기 (SEND) -->
+	<!-- 메일은 네이버를 기준으로 진행함 -->
+	<bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.naver.com" />
+		<property name="port" value="465" />
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="username" value="khteamfour" />
+		<property name="password" value="khteamfour1!" />
+		<!-- email 요청시는 SMTP 설정 -->
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.ssl.enable">true</prop>
+				<prop key="mail.smtp.ssl.trust">smtp.naver.com</prop>
+				<prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+			</props>
+		</property>
+	</bean>
+	<!--위에서 생성한 mailSender 클래스를 MailSendService의 생성자로 받아주자 -->
+	<bean id="mss" class="service.MailSendService">
+		<constructor-arg ref="mailSender" />
+	</bean>
+</beans>

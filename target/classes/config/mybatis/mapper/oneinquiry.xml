@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="oneinquiry">
+
+<!-- 1:1문의 등록 -->
+	<insert id="oneinquiry_insert" parameterType="vo.OneInquiryVO">
+		insert into ONEINQUIRY values(
+			idx_oneinquiry_seq.nextVal,
+			#{oneinquiry_user_idx},
+			#{oneinquiry_title},
+			#{oneinquiry_category},
+			#{oneinquiry_content},
+			#{oneinquiry_filename},
+			#{oneinquiry_filetype},
+			sysdate,
+			'답변대기',
+			0
+		)
+	</insert>
+
+<!-- user_idx별 1:1문의 총 수(페이징용)  -->	
+	<select id="oneinquiry_count" resultType="int" parameterType="java.util.Map">
+		select count(*) from ONEINQUIRY
+		where oneinquiry_user_idx = #{user_idx}
+	</select>
+	
+<!-- user_idx별 1:1문의 목록 -->
+	<select id="oneinquiry_list" resultType="vo.OneInquiryVO" parameterType="java.util.Map">
+		select * from
+		(select row_number() over(order by oneinquiry_regdate DESC) no, o.*
+		from (select * from ONEINQUIRY where oneinquiry_user_idx = #{user_idx}) o)
+		where no BETWEEN #{start} AND #{end}
+	</select>
+ 
+ <!-- 1:1문의 자세히 보기 -->  
+ 	<select id="oneinquiry_view" resultType="vo.OneInquiryVO" parameterType="int">
+ 		select * from ONEINQUIRY where oneinquiry_idx = #{oneinquiry_idx}
+ 	</select>
+ 	
+ <!-- 1:1문의 코멘트 리스트 -->
+ 	<select id="onecomment_list" resultType="vo.OneCommentVO" parameterType="int">
+ 		select * from ONECOMMENT where onecomment_oneinquiry_idx = #{oneinquiry_idx}
+ 	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

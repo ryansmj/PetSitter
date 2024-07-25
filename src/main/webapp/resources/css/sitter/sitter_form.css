@@ -1,0 +1,217 @@
+@charset "UTF-8";
+/* 모든 요소의 기본 마진과 패딩을 제거 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 기본 페이지 설정 */
+html, body {
+    font-family:EF_Diary;
+    background-color:white;
+    color: #333;
+    height: 100%;
+}
+
+/* 페이지 레이아웃 */
+body {
+    display: flex;
+    flex-direction: column;/* 수직배치 */
+    min-height: 100vh; /* 페이지 높이를 최소 뷰포트 높이로 설정 */
+}
+
+main {
+    flex: 1; /* 남은 공간을 채우도록 설정 */
+    padding: 20px;
+    display: flex;
+    justify-content: center; /* 중앙 정렬 */
+    align-items: flex-start; /* 상단 정렬 */
+}
+
+/* 폼 스타일 */
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+     /* 그림자 효과 */
+    width: 90%;
+    margin-bottom: 130px;
+}
+
+
+/* 폼 내부의 제목 스타일 */
+form h1{
+  	font-family: "Gamja Flower", sans-serif;
+    font-weight: 400;
+   	font-size:50px;
+    margin-bottom: 20px;
+    color: #333;
+    text-shadow: 1px 1px 1px rgba(1, 1, 0, 0.5);
+}
+form h3{
+   	font-family: "Gamja Flower", sans-serif;
+    font-weight: 400;
+   	font-size:30px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+
+
+
+
+form div {
+    margin-bottom: 20px;
+}
+
+/* 글 제목, 돌봄 장소, 가능한 서비스, 돌봄 환경, */
+.title, .address, .service, .environment,
+.pet_size,.pet_time,.introduce,.photo,
+.license,.pay,.note
+{   
+   box-shadow: 0 0 5px #C4DEFF;
+   padding: 10px;
+   border-radius: 10px;
+   
+}
+
+hr{
+   border: 1px solid #D9D6FF;
+}
+
+input[type="text"]{
+   width: 20%; /* 가로 폭을 100%로 설정 */
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #D9D6FF;
+    border-radius: 5px;
+}
+
+
+
+
+/* 입력 요소 스타일 */
+
+input[type="time"],
+input[type="date"],
+textarea,
+select {
+    width: 70%; /* 가로 폭을 100%로 설정 */
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #D9D6FF;
+    border-radius: 5px;
+}
+
+/* 체크박스 및 파일 입력 스타일 */
+input[type="checkbox"] {
+    margin-right: 5px;
+
+}
+
+input[type="file"] {
+    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid #D9D6FF;
+    border-radius: 5px;
+    
+}
+
+/* 버튼 스타일 */
+input[type="button"] {
+    background-color: #6799FF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer; /* 포인터 커서 표시 */
+}
+
+input[type="button"]:hover {
+    background-color: #5577cc; /* 호버 효과 */
+}
+
+/* 서비스 컨테이너 스타일 */
+
+.service-container{display: flex;
+               width: 600px;
+               border-radius: 10px;
+               padding: 5px 10px;
+               background-color: white;
+               box-shadow: 0 0 10px #C4DEFF;
+               }
+                        
+.service-container input{flex-direction: row;
+               margin:0 0 0 10px;}
+
+.dogsize {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-radius: 10px;
+    padding:5px;
+    margin-left:10px;
+    width: 600px;
+    background-color:white;
+    box-shadow: 0 0 10px #C4DEFF;
+}
+
+/* 돌봄 가능한 반려견 크기 스타일 */
+.dogsize input[type="checkbox"] {
+    margin-left: 0;
+    gap: 10px;
+   margin-left: 10px;
+}
+
+
+/* 스케줄 스타일 */
+.schedule {
+    display: flex;
+    gap: 10px;
+    align-items: center; /* 수직 중앙 정렬 */
+}
+
+.hour-cell, .minute-cell {
+    width: 50px;
+    border: 1px solid black;
+    cursor: pointer; /* 포인터 커서 표시 */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.hour-list, .minute-list {
+    display: none;
+    position: absolute;
+    background: #fff;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto; /* 수직 스크롤 생성 */
+    z-index: 10;
+}
+
+.hour-list div, .minute-list div {
+    cursor: pointer;
+    padding: 5px;
+}
+
+.hour-list div:hover, .minute-list div:hover {
+    background-color: #f0f0f0; /* 호버 효과 */
+}
+
+/* 환경 스타일 */
+.environment {
+    display: flex;
+    flex-wrap: wrap; /* 여러 줄로 나눠서 배치 */
+    gap: 20px;
+}
+
+.environment > div {
+    flex: 1; /* 남은 공간을 채우도록 설정 */
+    min-width: 150px;
+}
+
+.note{
+   width: 100%;
+}

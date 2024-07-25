@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+	form{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		padding-bottom: 5%;
+	}
+	
+	h2{
+		font-family : 'Gamja Flower', cursive;
+		font-size: 50px;
+		padding: 5% 0 2% 0;
+	}
+	
+	.dog_info{
+		padding: 15px;
+		width: 60%;
+	}
+	
+	p{
+		font-family: Nanum Gothic;
+		font-size:20px;
+		font-weight: bold;
+		padding: 10px 0 10px 0;
+	}
+	
+	#dogsize_containa, #dogname_containa,
+	#dogage_comtaina, #dogcare_containa,
+	#dogphoto_containa{
+		box-shadow: 0 0 5px #C4DEFF;
+		border-radius:10px;
+		padding: 10px;
+		margin: 20px;
+	}
+	
+	input[type="text"]{
+		padding: 10px;
+		border: 1px solid #C4DEFF;
+		border-radius:5px;
+		 
+	}
+	
+	#dog_age, #dog_size, #dog_care{
+		padding: 10px;
+		border: 1px solid #C4DEFF;
+		border-radius:5px;
+	}
+	
+	input[type="button"]{
+		font-family: Nanum Gothic;
+		font-weight:bold;
+		font-size:20px;
+		width:200px;
+		padding: 10px;
+		border-radius:5px;
+		border: none;
+		background-color: #C4DEFF;
+	}
+	
+	input[type="button"]:hover{
+		background-color: #79ABFF;
+	}
+	
+	
+	input[type="file"]{
+		font-family: Nanum Gothic;
+		font-weight: bold;
+	}
+
+	
+	
+	
+	
+	

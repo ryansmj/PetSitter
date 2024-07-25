@@ -1,0 +1,88 @@
+/* sitter_form.css */
+
+/* 기본 스타일 초기화 */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Dongle', sans-serif;
+			}
+
+
+
+/* 바디 스타일 설정 */
+body {
+    background-color: white; /* 배경색 설정 */
+    color: #333; /* 텍스트 색상 설정 */
+    font-family: 'Gamja Flower', cursive; /* 폰트 설정 */
+    line-height: 1.6; /* 줄 간격 설정 */
+    
+}
+
+
+/* 메인 콘텐츠 스타일 설정 */
+main {
+    margin: 20px auto; /* 상하 좌우 마진 설정 */
+    max-width: 70%; /* 최대 너비 설정 */
+    padding: 20px; /* 패딩 설정 */
+    background: white; /* 배경색 설정 */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* 그림자 설정 */
+	border-radius: 10px;
+	margin-bottom: 140px;
+}
+
+/* 제목 스타일 설정 */
+h2 {
+    color: #333; /* 텍스트 색상 설정 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    margin-bottom: 20px; /* 하단 마진 설정 */
+    font-size: 2em; /* 폰트 크기 설정 */
+    font-family: 'Gamja Flower', cursive;
+}
+
+/* 테이블 스타일 설정 */
+table {
+    width: 100%; /* 테이블 너비 설정 */
+    border-collapse: collapse; /* 테이블 테두리 중복 제거 */
+    margin-bottom: 20px; /* 하단 마진 설정 */
+}
+
+/* 테이블 헤더와 데이터 셀 스타일 설정 */
+th, td {
+    border: 1px solid #ddd; /* 테두리 색상 설정 */
+    padding: 10px; /* 패딩 설정 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+}
+
+/* 테이블 헤더 스타일 설정 */
+th {
+    background-color: #C4DEFF; /* 배경색 설정 */
+}
+
+/* 텍스트 입력 필드, 버튼 및 셀렉트 박스 스타일 설정 */
+input[type="text"], input[type="button"], select {
+    width: 200px; /* 너비 설정 */
+    padding: 10px; /* 패딩 설정 */
+    margin: 5px 0; /* 상하 마진 설정 */
+    border: 1px solid #ccc; /* 테두리 색상 설정 */
+    border-radius: 5px; /* 테두리 둥글게 설정 */
+}
+
+/* 버튼 스타일 설정 */
+input[type="button"] {
+    background-color: #C4DEFF; /* 배경색 설정 */
+    color: black; /* 텍스트 색상 설정 */
+    cursor: pointer; /* 커서 모양 설정 */
+    border: none; /* 테두리 없음 */
+    font-weight: bold;
+    
+}
+
+input[type="button"]:hover{
+	background-color:#6799FF;
+}
+
+.none{
+	background-color:#C4DEFF ;
+	
+}

@@ -1,0 +1,178 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: NanumGothicCoding;
+}
+
+/* 왼쪽 메뉴 스타일(mypage_menu) */
+			
+			/* maPage.jsp */
+			#myPage{
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				
+			}
+			
+			.mypage_img{
+				border-radius: 10px;
+				margin-bottom:20px;
+				height: 500px;
+			}
+			
+			
+			/* myPage_menu.jsp */
+			#myPage_menu_main{
+				display:flex;
+				justify-content: center;
+				align-items: center;	
+		
+			}
+			
+			
+			.left-menu {
+			    width: 100%; /* width를 100%로 변경하여 메뉴가 가로로 늘어날 수 있도록 함 */
+			    padding: 50px;
+			    
+			    
+			}
+			
+			.left-menu ul {
+			    list-style-type: none;
+			    padding: 0;
+			    margin: 0;
+			    display: flex; /* ul을 flex 컨테이너로 변경하여 자식 요소들을 가로로 정렬 */
+			    flex-direction: row; /* flexbox를 가로 정렬로 설정 */
+			    gap: 30px; /* li 요소들 간의 간격을 10px로 설정 */
+			}
+			
+			.left-menu li {
+			    margin: 0; /* li 요소의 기본 margin 제거 */
+				
+			}
+			
+			.left-menu a {
+			    display: block;
+			    width:170px;
+			    padding: 13px;
+			    background-color: #5586EB;
+			    color: #fff;
+			    text-decoration: none;
+			    border-radius: 10px;
+			    text-align: center;
+			    box-shadow: 0 1px 2px #5586EB;
+			    font-family: Nanum Gothic;
+				font-weight: bold;
+			}
+			
+			.left-menu a:hover {
+			    background-color: #C4DEFF;
+			}
+
+			
+			
+			/* myPage_favorite.jsp */
+			
+		
+			h3{
+				font-family: "Gamja Flower", sans-serif;
+				font-weight: bold;
+				font-size: 50px;
+				color: black;
+				display:flex;
+				justify-content:center;
+				align-items: center;
+				padding-bottom: 20px;
+			}
+			
+			.my_favorite{
+				width:100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			table {
+				padding: 15px;
+				border-radius: 10px;
+ 			}
+ 			
+ 			th{
+ 				background-color: #C4DEFF;
+ 				box-shadow: 0 2px 2px #C4DEFF;
+ 			}
+ 			
+ 			td, th{
+ 				
+ 				padding:15px;
+ 				box-shadow: 0 1px 2px #C4DEFF;
+ 				text-align: center;
+ 				font-family: Nanum Gothic;
+				font-weight: bold;
+				border-radius: 5px;
+ 			}
+ 			
+ 			a{
+ 				text-decoration: none;
+ 				font-family: Nanum Gothic;
+				font-weight: bold;
+ 			}
+			
+			a:hover{
+				color: black;
+			}
+			
+			.more_Atag{
+				color:black;
+				text-decoration: none;
+ 				font-family: Nanum Gothic;
+				font-weight: bold;
+			}
+			
+			.more_Atag:hover{
+				color: gray;
+			}
+			
+			input[type="button"]{
+				padding:10px;
+				font-family: Nanum Gothic;
+				font-weight: bold;
+				background-color: #C4DEFF;
+				border: none;
+				border-radius: 5px;
+				font-size:15px;
+				box-shadow: 0 1px 2px #5586EB;
+			}
+			
+			input[type="button"]:hover{
+				font-family: Nanum Gothic;
+				font-weight: bold;
+				background-color: #5586EB;
+			}
+			
+			
+			.pageMenu{
+				padding:20px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				
+			}
+			
+			
+			/* mypage_reserve.jsp */
+			
+			#reserve_containa{
+				width:100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			
+			

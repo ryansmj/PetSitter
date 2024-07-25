@@ -1,0 +1,80 @@
+   /* main 요소 스타일링 */
+   main {
+       max-width: 800px;
+       margin: 0 auto;
+       padding: 20px;
+   }
+   
+   h2{
+      font-family : 'Gamja Flower', cursive;
+      font-size: 50px;
+      padding: 5% 0 2% 0;
+      text-align: center;
+   }
+   
+   p{
+      font-family: Nanum Gothic;
+      font-size:20px;
+      font-weight: bold;
+      padding: 10px 0 10px 0;
+   }
+   
+   /* 강아지 정보 컨테이너 스타일링 */
+   #my_doginfo_containa {
+       box-shadow: 0 1px 2px #C4DEFF;
+       border-radius: 5px;
+       padding: 20px;
+       margin-bottom: 20px;
+   }
+   
+   /* 강아지 이름 스타일링 */
+   #dog_name {
+       border-bottom:3px dotted #C4DEFF;
+       padding: 10px;
+       border-radius: 5px;
+       text-shadow: 0 1px 3px gray;
+      
+   }
+   
+   /* 강아지 사진 스타일링 */
+   .dog_photo img {
+       width: 200px;
+       height: 200px;
+       border: 1px solid #ddd;
+       border-radius: 5px;
+       margin-right: 20px;
+       float: left; /* 사진을 왼쪽에 정렬 */
+   }
+   
+   /* 강아지 정보 스타일링 */
+   .dog_info {
+       margin-top: 20px;
+   }
+   
+   .dog_info div {
+       margin-bottom: 10px;
+   }
+   
+   /* 수정 및 삭제 버튼 스타일링 */
+   .dog_send_btn {
+       margin-top: 20px;
+   }
+   
+   .dog_send_btn a {
+       text-decoration: none;
+   }
+   
+   .dog_send_btn button {
+       padding: 10px 20px;
+       font-family: Nanum Gothic;
+       background-color: #C4DEFF;
+       font-weight:bold;
+       color: black;
+       border: none;
+       cursor: pointer;
+       margin-right: 10px;
+   }
+   
+   .dog_send_btn button:hover {
+       background-color: #79ABFF;
+   }
