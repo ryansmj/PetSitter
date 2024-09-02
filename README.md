@@ -11,7 +11,7 @@
 ---
 
 ## 목차
-1. [🎯 프로젝트 목적](#%F0%9F%8E%AF-%ED%94%84%EB%A1%9C%EC%A0%9D%EB%B0%B0%EA%B2%BD)
+1. [🎯 프로젝트 목적](#%F0%9F%8E%AF-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%95%98%EA%B5%AC-%EB%AA%A9%EC%A0%81)
 2. [🏠 프로젝트 배경](#%F0%9F%8F%A0-%ED%94%84%EB%A1%9C%EC%A0%9D%EB%B0%B0%EA%B2%BD)
 3. [💻 개발 환경](#%F0%9F%92%BB-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD)
 4. [📊 ERD](#%F0%9F%93%8A-erd)
