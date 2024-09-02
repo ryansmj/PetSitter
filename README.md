@@ -13,10 +13,11 @@
 ## 목차
 1. [🎯 프로젝트 목적](#-프로젝트-목적)
 2. [🏠 프로젝트 배경](#-프로젝트-배경)
-3. [💻 개발 환경](#-개발-환경)
-4. [📊 ERD](#-erd)
-5. [📸 프로젝트 화면](#-프로젝트-화면)
-6. [🛠️ 트러블슈팅 사례](#-트러블슈팅-사례)
+3. [🚀 프로젝트 개발 목표](#-프로젝트-개발-목표)
+4. [💻 개발 환경](#-개발-환경)
+5. [📊 ERD](#-erd)
+6. [📸 프로젝트 화면](#-프로젝트-화면)
+7. [🛠️ 트러블슈팅 사례](#-트러블슈팅-사례)
 
 ---
 
@@ -30,15 +31,24 @@
 
 ---
 
+## 🚀 프로젝트 개발 목표
+- **SQL 쿼리문 작성법 숙달**: 효율적이고 최적화된 SQL 쿼리 작성 능력을 강화.
+- **JavaScript 문법 숙지**: 자주 사용하는 JavaScript 문법을 익히기.
+- **Spring 활용**: Spring로 효율적이고 확장 가능한 백엔드 시스템 구축.
+- **AJAX 활용**: 비동기 통신으로 페이지 새로고침 없이 데이터 갱신.
+- **API 사용**: 외부 API를 활용해 결제 및 메일 인증 기능 구현.
+
+---
+
 ## 💻 개발 환경
-- **🖥️ OS**: Windows 10
+- **🖥️ OS**: Windows 11
 - **🔧 DevTools**: Spring Tool Suite 3
 - **🗄️ DBMS**: Oracle 11g
 - **🌐 Server**: Apache Tomcat
 - **💻 Language**: JAVA
 - **📚 Framework**: Spring
-- **🌐 Frontend**: HTML5, CSS3, Javascript, jQuery, Chart.js(차트)
-- **🛠️ Backend**: Maven, MyBatis, JSTL, Spring Security, Iamport API(결제 모듈), Naver Mail API(메일 인증)
+- **🌐 Frontend**: HTML5, CSS3, Javascript, AJAX, jQuery, Chart.js(차트)
+- **🛠️ Backend**: MyBatis, JSTL, Iamport API(결제 모듈), Naver Mail API(메일 인증)
 
 ---
 
