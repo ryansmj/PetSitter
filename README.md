@@ -44,6 +44,7 @@
 
 ## 📊 ERD
 ![PetSitter_ERD](images_git/PetSitter_ERD.png)
+**빨간색으로 표시된 테이블은 제가 직접 설계하고 구현한 테이블입니다.**
 
 ---
 
